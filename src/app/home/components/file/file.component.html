@@ -10,5 +10,12 @@
     </ion-item>
 
     <ion-button expand="full" (click)="uploadFile()" *ngIf="selectedFile">파일 전송</ion-button>
+
+
   </ion-card-content>
+  <video width="100%" controls autoplay>
+    <source src="http://localhost:3000/api/file/test_video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
 </ion-card>

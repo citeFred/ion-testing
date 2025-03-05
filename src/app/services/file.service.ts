@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FileService {
-  private apiUrl = 'http://localhost:3000/api/file'; // 백엔드 API URL
+  public apiUrl = 'http://localhost:3000/api/file'; // 백엔드 API URL
 
   constructor(private http: HttpClient) {}
 
@@ -16,8 +16,12 @@ export class FileService {
     formData.append('file', file, file.name);
 
     return this.http.post(`${this.apiUrl}/upload`, formData, {
-      headers: new HttpHeaders({
-      }),
+      headers: new HttpHeaders({}),
     });
+  }
+
+  // 파일 URL 가져오기 메서드
+  getFileUrl(filename: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${filename}`);
   }
 }
